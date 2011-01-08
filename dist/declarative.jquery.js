@@ -22,9 +22,7 @@ if ($.Widget) {
         data = data === "true" ? true :
         data === "false" ? false :
         data === "null" ? null :
-        !jQuery.isNaN( data ) ? parseFloat( data ) :
-          rbrace.test( data ) ? jQuery.parseJSON( data ) :
-          data;
+        !jQuery.isNaN(data) ? parseFloat(data) : data;
       } catch( e ) {}
       return data;
     } else {
@@ -42,7 +40,7 @@ if ($.Widget) {
         if (option) { data[name] = option; }
       }
     }
-    var options = $.extend({}, $.render.options[this.widgetName], data);
+    var options = $.extend({}, $.render.defaultOptions[this.widgetName], data);
     $.each(options, function(key, value) {
       if (key == 'icon') {
         result.icons = result.icons || {};
@@ -85,7 +83,7 @@ $.render = {
   mapping: {},
 
   //
-  options: {},
+  defaultOptions: {},
 
   //
   exceptOptions: [],
@@ -221,7 +219,7 @@ $.extend(true, $.render, {
   },
 
   //
-  options: {
+  defaultOptions: {
     tabs: {
       cache: true
     },
@@ -242,6 +240,8 @@ $.merge($.render.exceptOptions, ['type', 'role']);
 })(jQuery);
 (function($, undefined) {
 
+var isURL = /^[\/]?[\w\-\.]+[^#?\s]+(.*)?(#[\w\-]+)?$/;
+
 $.extend(true, $.actions, {
 
   //
@@ -258,7 +258,7 @@ $.extend(true, $.actions, {
       if (!$.ui.dialog) { return $.error("UI Dialog plugin is not loaded..."); }
       if (isId) {
         $(ref).dialog();
-      } else {
+      } else if (ref.test(isURL)) {
         var content = dialogCache[ref];
         if (!content) {
           $.get(ref, function(data) {

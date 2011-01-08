@@ -1,5 +1,7 @@
 (function($, undefined) {
 
+var isURL = /^[\/]?[\w\-\.]+[^#?\s]+(.*)?(#[\w\-]+)?$/;
+
 $.extend(true, $.actions, {
 
   //
@@ -16,7 +18,7 @@ $.extend(true, $.actions, {
       if (!$.ui.dialog) { return $.error("UI Dialog plugin is not loaded..."); }
       if (isId) {
         $(ref).dialog();
-      } else {
+      } else if (ref.test(isURL)) {
         var content = dialogCache[ref];
         if (!content) {
           $.get(ref, function(data) {

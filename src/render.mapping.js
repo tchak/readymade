@@ -17,7 +17,7 @@ $.extend(true, $.render, {
   },
 
   //
-  options: {
+  defaultOptions: {
     tabs: {
       cache: true
     },
