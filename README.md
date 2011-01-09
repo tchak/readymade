@@ -1,5 +1,5 @@
-Declarative jQuery
-==================
+Landscape JS
+============
 
 This library for now provide two jQuery plugins
 -----------------------------------------------
@@ -15,4 +15,4 @@ jQuery Actions
 --------------
 This plugin map events on dom elements to custom handlers via declared selectors.
 
-*More info at [http://tchak.github.com/declarative](http://tchak.github.com/declarative).*
+*More info at [http://tchak.github.com/landscape](http://tchak.github.com/landscape).*

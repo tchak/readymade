@@ -4,7 +4,7 @@ $.extend(true, $.render, {
 
   //
   mapping: {
-    'button': 'button, input:submit, input:reset, input:button, [data-role=button]',
+    "button": "button, input:submit, input:reset, input:button, [data-role=button]",
     'buttonset': '[data-role=buttonset]',
     'datepicker': 'input[data-type=date], [data-role=datepicker]',
     'tabs': '[data-role=tabs]',
