@@ -15,4 +15,6 @@ jQuery Actions
 --------------
 This plugin map events on dom elements to custom handlers via declared selectors.
 
-*More info at [http://tchak.github.com/landscape](http://tchak.github.com/landscape).*
+More info
+---------
+[http://tchak.github.com/landscapejs](http://tchak.github.com/landscapejs)
