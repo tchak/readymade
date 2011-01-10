@@ -64,7 +64,7 @@ $.fn.render = function() {
   target.addClass('landscape-rendering');
 
   var beforeEvent = new $.Event('renderbefore');
-  this.trigger(beforeEvent, {'fragment': target});
+  $(document).trigger(beforeEvent, {'fragment': target});
   if (beforeEvent.result !== false) {
     $.each(mapping, function(method, selector) {
       var fn = $.fn[method];
