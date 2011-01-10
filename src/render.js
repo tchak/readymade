@@ -3,7 +3,7 @@
 var optimizedMapping;
 
 //
-$('html').addClass('render-loading');
+$('html').addClass('landscape-loading');
 
 // Options auto load from defaults and data attributes
 if ($.Widget) {
@@ -61,7 +61,7 @@ $.fn.render = function() {
   var target = this, mapping = optimizedMapping || $.render.mapping;
 
   // Do actual rendering
-  target.addClass('render-working');
+  target.addClass('landscape-rendering');
 
   var beforeEvent = new $.Event('renderbefore');
   this.trigger(beforeEvent, {'fragment': target});
@@ -74,7 +74,7 @@ $.fn.render = function() {
     });
     $(document).trigger('renderafter', {'fragment': target});
   }
-  return target.removeClass('render-working');
+  return target.removeClass('landscape-rendering');
 };
 
 $.render = {
@@ -112,7 +112,7 @@ $.render = {
 };
 
 $(document).trigger('renderinit').one('renderafter', function() {
-  $('html').removeClass('render-loading');
+  $('html').removeClass('landscape-loading');
 });
 
 // Default to render on load

@@ -3,7 +3,7 @@
 var optimizedMapping;
 
 //
-$('html').addClass('render-loading');
+$('html').addClass('landscape-loading');
 
 // Options auto load from defaults and data attributes
 if ($.Widget) {
@@ -61,7 +61,7 @@ $.fn.render = function() {
   var target = this, mapping = optimizedMapping || $.render.mapping;
 
   // Do actual rendering
-  target.addClass('render-working');
+  target.addClass('landscape-rendering');
 
   var beforeEvent = new $.Event('renderbefore');
   this.trigger(beforeEvent, {'fragment': target});
@@ -74,7 +74,7 @@ $.fn.render = function() {
     });
     $(document).trigger('renderafter', {'fragment': target});
   }
-  return target.removeClass('render-working');
+  return target.removeClass('landscape-rendering');
 };
 
 $.render = {
@@ -112,7 +112,7 @@ $.render = {
 };
 
 $(document).trigger('renderinit').one('renderafter', function() {
-  $('html').removeClass('render-loading');
+  $('html').removeClass('landscape-loading');
 });
 
 // Default to render on load
@@ -124,7 +124,7 @@ if ($.render.auto === true) {
 })(jQuery);
 (function($, undefined) {
 
-var isLive = false, dialogCache = {},
+var isLive = false,
 
 // Cached regex to split keys for `live`.
 eventSplitter = /^(\w+)\s*(.*)$/,
@@ -175,24 +175,26 @@ $.actions = {
     isLive = false;
   },
 
-  //
+  // Default actions :
+  // toggle / submit / preventDefault
   fn: {
 
-    //
+    // Use toggle action to switch visibility of some elements
     toggle: function(evt, ref, isId) {
       if (isId) {
         if (!$(ref).toggle().is(':visible')) { evt.preventDefault(); }
       }
     },
 
-    //
+    // Use submit action to submit forms. You can submit current elements form
+    // or any other form on page by passing an id.
     submit: function(evt, ref, isId) {
       evt.preventDefault();
       if (ref == "") { $(this).closest('form').submit(); }
       else if (isId && $(ref).is('form')) { $(ref).submit(); }
     },
 
-    //
+    // Use preventDefault action to break events chane.
     preventDefault: function(evt) {
       evt.preventDefault();
     }
@@ -240,7 +242,8 @@ $.merge($.render.exceptOptions, ['type', 'role']);
 })(jQuery);
 (function($, undefined) {
 
-var isURL = /^[\/]?[\w\-\.]+[^#?\s]+(.*)?(#[\w\-]+)?$/;
+var dialogCache = {},
+isURL = /^[\/]?[\w\-\.]+[^#?\s]+(.*)?(#[\w\-]+)?$/;
 
 $.extend(true, $.actions, {
 

@@ -1,6 +1,7 @@
 (function($, undefined) {
 
-var isURL = /^[\/]?[\w\-\.]+[^#?\s]+(.*)?(#[\w\-]+)?$/;
+var dialogCache = {},
+isURL = /^[\/]?[\w\-\.]+[^#?\s]+(.*)?(#[\w\-]+)?$/;
 
 $.extend(true, $.actions, {
 
