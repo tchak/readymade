@@ -3,7 +3,7 @@
 var optimizedMapping;
 
 //
-$('html').addClass('landscape-loading');
+$('html').addClass("landscape-loading");
 
 // Options auto load from defaults and data attributes
 if ($.Widget) {
@@ -17,7 +17,7 @@ if ($.Widget) {
     // Try to fetch any
     // data from the HTML5 data-* attribute
     if (elem.nodeType === 1 && $.inArray(key, $.render.exceptOptions) == -1) {
-      var data = elem.getAttribute('data-'+key);
+      var data = elem.getAttribute("data-"+key);
       try {
         data = data === "true" ? true :
         data === "false" ? false :
@@ -37,17 +37,17 @@ if ($.Widget) {
       if (name.indexOf("data-") === 0) {
         name = name.substr(5);
         option = dataAttr(this.element[0], name);
-        if (option) { data[name] = option; }
+        if (option !== null) { data[name] = option; }
       }
     }
     var options = $.extend({}, $.render.defaultOptions[this.widgetName], data);
     $.each(options, function(key, value) {
-      if (key == 'icon') {
+      if (key == "icon") {
         result.icons = result.icons || {};
-        result.icons.primary = 'ui-icon-'+value;
-      } else if (key == 'icon-primary' || key == 'icon-secondary') {
+        result.icons.primary = "ui-icon-"+value;
+      } else if (key == "icon-primary" || key == "icon-secondary") {
         result.icons = result.icons || {};
-        result.icons[key.split('-')[1]] = 'ui-icon-'+value;
+        result.icons[key.split("-")[1]] = "ui-icon-"+value;
       } else {
         result[camelize(key)] = value;
       }
@@ -61,10 +61,10 @@ $.fn.render = function() {
   var target = this, mapping = optimizedMapping || $.render.mapping;
 
   // Do actual rendering
-  target.addClass('landscape-rendering');
+  target.addClass("landscape-rendering");
 
-  var beforeEvent = new $.Event('renderbefore');
-  $(document).trigger(beforeEvent, {'fragment': target});
+  var beforeEvent = new $.Event("renderbefore");
+  $(document).trigger(beforeEvent, {"fragment": target});
   if (beforeEvent.result !== false) {
     $.each(mapping, function(method, selector) {
       var fn = $.fn[method];
@@ -72,9 +72,9 @@ $.fn.render = function() {
         fn.apply(target.filter(selector).add(target.find(selector)), []);
       }
     });
-    $(document).trigger('renderafter', {'fragment': target});
+    $(document).trigger("renderafter", {"fragment": target});
   }
-  return target.removeClass('landscape-rendering');
+  return target.removeClass("landscape-rendering");
 };
 
 $.render = {
@@ -103,7 +103,7 @@ $.render = {
       if ($.actions) { $.actions.start(); }
       // Watch for dialog open events and render content
       if ($.ui && $.ui.dialog) {
-        $(':ui-dialog').live('dialogopen', function() { $(this).render(); });
+        $(':ui-dialog').live("dialogopen", function() { $(this).render(); });
       }
       $.render.optimize();
       $('body').render();
@@ -111,12 +111,12 @@ $.render = {
   }
 };
 
-$(document).trigger('renderinit').one('renderafter', function() {
-  $('html').removeClass('landscape-loading');
+$(document).trigger("renderinit").one("renderafter", function() {
+  $('html').removeClass("landscape-loading");
 });
 
 // Default to render on load
-if (!('auto' in $.render)) { $.render.auto = true; }
+if (!("auto" in $.render)) { $.render.auto = true; }
 if ($.render.auto === true) {
   $.render.start();
 }

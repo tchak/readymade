@@ -12,16 +12,16 @@ function actionArguments(evt, target) {
 }
 
 if ($.render) {
-  $.merge($.render.exceptOptions, ['rel', 'target']);
+  $.merge($.render.exceptOptions, ["rel", "target"]);
 }
 
 $.actions = {
 
   //
   mapping: {
-    'toggle': 'click [data-rel~=toggle]',
-    'submit': 'click [data-rel~=submit]',
-    'preventDefault': 'click [data-rel~=nodefault]'
+    "toggle": 'click [data-rel~=toggle]',
+    "submit": 'click [data-rel~=submit]',
+    "preventDefault": 'click [data-rel~=nodefault]'
   },
 
   //
@@ -32,7 +32,7 @@ $.actions = {
         if ($.isFunction(self.fn[name])) {
           var match = key.match(eventSplitter);
           var eventName = match[1], selector = match[2];
-          $(selector).live(eventName+'.actions', function(evt) {
+          $(selector).live(eventName+".actions", function(evt) {
             self.fn[name].apply(this, actionArguments(evt, this));
           });
         }
@@ -46,7 +46,7 @@ $.actions = {
     $.each($.actions.mapping, function(name, key) {
       var match = key.match(eventSplitter);
       var eventName = match[1], selector = match[2];
-      $(selector).die(eventName+'.actions');
+      $(selector).die(eventName+".actions");
     });
     isLive = false;
   },

@@ -7,8 +7,8 @@ $.extend(true, $.actions, {
 
   //
   mapping: {
-    'dialog': 'click [data-rel~=dialog]',
-    'menu': 'click [data-rel~=menu]'
+    "dialog": 'click [data-rel~=dialog]',
+    "menu": 'click [data-rel~=menu]'
   },
 
   //
@@ -19,14 +19,14 @@ $.extend(true, $.actions, {
       if (!$.ui.dialog) { return $.error("UI Dialog plugin is not loaded..."); }
       if (isId) {
         $(ref).dialog();
-      } else if (ref.test(isURL)) {
+      } else if (isURL.test(ref)) {
         var content = dialogCache[ref];
         if (!content) {
           $.get(ref, function(data) {
             dialogCache[ref] = $(data).dialog();
           });
         } else {
-          $(content).dialog('open');
+          $(content).dialog("open");
         }
       }
     },
@@ -35,7 +35,7 @@ $.extend(true, $.actions, {
     menu: function(evt, ref, isId) {
       evt.preventDefault();
       if (!$.ui.menu) { return $.error("UI Menu plugin is not loaded..."); }
-      if (isId) { $(ref).menu('open'); }
+      if (isId) { $(ref).menu("open"); }
     }
   }
 });
