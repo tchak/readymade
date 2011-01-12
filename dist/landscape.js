@@ -208,7 +208,7 @@ $.extend(true, $.render, {
 
   //
   mapping: {
-    "button": "button, input:submit, input:reset, input:button, [data-role=button]",
+    "button": 'button, input:submit, input:reset, input:button, [data-role=button]',
     "buttonset": '[data-role=buttonset]',
     "datepicker": 'input[data-type=date], [data-role=datepicker]',
     "tabs": '[data-role=tabs]',
@@ -230,14 +230,14 @@ $.extend(true, $.render, {
       width: 450,
       buttons: {
         OK: function() {
-          $(this).dialog('close');
+          $(this).dialog("close");
         }
       }
     }
   }
 });
 
-$.merge($.render.exceptOptions, ['type', 'role']);
+$.merge($.render.exceptOptions, ["type", "role"]);
 
 })(jQuery);
 (function($, undefined) {
