@@ -3,7 +3,7 @@
 var optimizedMapping;
 
 //
-$('html').addClass('render-loading');
+$('html').addClass("render-loading");
 
 // Options auto load from defaults and data attributes
 if ($.Widget) {
@@ -17,7 +17,7 @@ if ($.Widget) {
     // Try to fetch any
     // data from the HTML5 data-* attribute
     if (elem.nodeType === 1 && $.inArray(key, $.render.exceptOptions) == -1) {
-      var data = elem.getAttribute('data-'+key);
+      var data = elem.getAttribute("data-"+key);
       try {
         data = data === "true" ? true :
         data === "false" ? false :
@@ -42,7 +42,7 @@ if ($.Widget) {
     }
     var options = $.extend({}, $.render.defaultOptions[this.widgetName], data);
     $.each(options, function(key, value) {
-      if (key == 'icon') {
+      if (key == "icon") {
         result.icons = result.icons || {};
         result.icons.primary = 'ui-icon-'+value;
       } else if (key == 'icon-primary' || key == 'icon-secondary') {
@@ -99,8 +99,10 @@ $.render = {
 
   start: function() {
     $(function() {
-      // Initialize relations
+      // Initialize actions
       if ($.actions) { $.actions.start(); }
+      // Initialize orientation
+      if ($.orientation) { $.orientation.start(); }
       // Watch for dialog open events and render content
       if ($.ui && $.ui.dialog) {
         $(':ui-dialog').live('dialogopen', function() { $(this).render(); });
