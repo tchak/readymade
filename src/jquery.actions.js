@@ -12,7 +12,7 @@ function actionArguments(evt, target) {
 }
 
 if ($.render) {
-  $.merge($.render.exceptOptions, ["rel", "target"]);
+  $.merge($.plugin.exceptOptions, ["rel", "target"]);
 }
 
 $.actions = {

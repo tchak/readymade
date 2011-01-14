@@ -12,10 +12,12 @@ JS_DIST_DIR = File.join(JS_ROOT, 'dist')
 JS_PKG_DIR  = File.join(JS_ROOT, 'pkg')
 
 JS_FILES = [
-  File.join(JS_SRC_DIR, 'render.js'),
-  File.join(JS_SRC_DIR, 'actions.js'),
-  File.join(JS_SRC_DIR, 'render.mapping.js'),
-  File.join(JS_SRC_DIR, 'actions.mapping.js')
+  File.join(JS_SRC_DIR, 'jquery.plugin.options.js'),
+  File.join(JS_SRC_DIR, 'jquery.render.js'),
+  File.join(JS_SRC_DIR, 'jquery.actions.js'),
+  File.join(JS_SRC_DIR, 'jquery.layout.js'),
+  File.join(JS_SRC_DIR, 'jquery.render.mapping.js'),
+  File.join(JS_SRC_DIR, 'jquery.actions.mapping.js')
 ]
 
 task :default => [:clean, :concat, :dist]

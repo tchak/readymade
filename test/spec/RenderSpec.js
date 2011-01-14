@@ -1,4 +1,4 @@
-describe("Declarative jQuery Render", function() {
+describe("Landscape JS Render", function() {
 
   var testContext;
 
@@ -18,37 +18,37 @@ describe("Declarative jQuery Render", function() {
   });
 
   it('should render button from <span>', function() {
-    expect(testContext).toHaveSelector(buttonSelector);
-    expect(testContext.find('span[data-role=button]')).toBeSelector(buttonSelector);
+    expect(testContext).toHaveCSS(buttonSelector);
+    expect(testContext.find('span[data-role=button]')).toBeCSS(buttonSelector);
   });
 
   it('should render button from <input type="submit">', function() {
-    expect(testContext).toHaveSelector(buttonSelector);
-    expect(testContext.find('input:submit')).toBeSelector(buttonSelector);
+    expect(testContext).toHaveCSS(buttonSelector);
+    expect(testContext.find('input:submit')).toBeCSS(buttonSelector);
   });
 
   it('should render button from <button>', function() {
-    expect(testContext).toHaveSelector(buttonSelector);
-    expect(testContext.find('button')).toBeSelector(buttonSelector);
+    expect(testContext).toHaveCSS(buttonSelector);
+    expect(testContext.find('button')).toBeCSS(buttonSelector);
   });
 
   it('should render button from <a>', function() {
-    expect(testContext).toHaveSelector(buttonSelector);
-    expect(testContext.find('a[data-role=button]')).toBeSelector(buttonSelector);
+    expect(testContext).toHaveCSS(buttonSelector);
+    expect(testContext.find('a[data-role=button]')).toBeCSS(buttonSelector);
   });
 
   it('should render progressbar from <div>', function() {
-    expect(testContext).toHaveSelector(progressbarSelector);
-    expect(testContext.find('div[data-role=progressbar]')).toBeSelector(progressbarSelector);
+    expect(testContext).toHaveCSS(progressbarSelector);
+    expect(testContext.find('div[data-role=progressbar]')).toBeCSS(progressbarSelector);
   });
 
   // it('should render spinner from <input type="text">', function() {
-  //   expect(testContext).toHaveSelector(spinnerSelector);
-  //   expect(testContext.find('input:text[data-role=spinner]')).toBeSelector(spinnerSelector);
+  //   expect(testContext).toHaveCSS(spinnerSelector);
+  //   expect(testContext.find('input:text[data-role=spinner]')).toBeCSS(spinnerSelector);
   // });
 
   it('should render autocomplete from <input type="text">', function() {
-    expect(testContext).toHaveSelector(autocompleteSelector);
-    expect(testContext.find('input:text[data-role=autocomplete]')).toBeSelector(autocompleteSelector);
+    expect(testContext).toHaveCSS(autocompleteSelector);
+    expect(testContext.find('input:text[data-role=autocomplete]')).toBeCSS(autocompleteSelector);
   });
 });

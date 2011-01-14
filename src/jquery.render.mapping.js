@@ -14,7 +14,10 @@ $.extend(true, $.render, {
     // Alpha 1.9 UI widgets
     "spinner": 'input[data-role=spinner]',
     "menu": '[data-role=menu]:visible'
-  },
+  }
+});
+
+$.extend(true, $.plugin, {
 
   //
   defaultOptions: {
@@ -33,6 +36,6 @@ $.extend(true, $.render, {
   }
 });
 
-$.merge($.render.exceptOptions, ["type", "role"]);
+$.merge($.plugin.exceptOptions, ["type", "role"]);
 
 })(jQuery);

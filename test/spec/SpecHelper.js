@@ -1,10 +1,10 @@
 beforeEach(function() {
   this.addMatchers({
-    toHaveSelector: function(expectedSelector) {
+    toHaveCSS: function(expectedSelector) {
       return $(expectedSelector, this.actual).length > 0;
     },
 
-    toBeSelector: function(expectedSelector) {
+    toBeCSS: function(expectedSelector) {
       return $(this.actual).is(expectedSelector);
     }
   });
