@@ -1,5 +1,5 @@
-Landscape JS
-============
+Ready-Made JS
+=============
 
 This library for now provide three jQuery plugins
 -------------------------------------------------
@@ -18,8 +18,8 @@ This plugin map events on dom elements to custom handlers via declared selectors
 
 jQuery Layout
 -------------
-This plugin provides you with cross-browser `orientationchange` event and set some media query like classes on html element.
+This plugin provides you with cross-browser/cross-platform `orientationchange` event and set some media-query like classes on html element.
 
 More info
 ---------
-[http://tchak.github.com/landscapejs](http://tchak.github.com/landscapejs)
+[http://tchak.github.com/readymadejs](http://tchak.github.com/readymadejs)
