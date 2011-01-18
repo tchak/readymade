@@ -4,7 +4,7 @@ require 'rake/packagetask'
 require 'closure-compiler'
 
 PACKAGE_VERSION = File.read('VERSION').strip
-PACKAGE = "landscape"
+PACKAGE = "readymade"
 
 JS_ROOT     = File.expand_path(File.dirname(__FILE__))
 JS_SRC_DIR  = File.join(JS_ROOT, 'src')

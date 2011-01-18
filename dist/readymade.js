@@ -71,14 +71,14 @@ if ($.Widget) {
 
 var optimizedMapping;
 
-$('html').addClass("landscape-loading");
+$('html').addClass("render-before");
 
 //
 $.fn.render = function() {
   var target = this, mapping = optimizedMapping || $.render.mapping;
 
   // Do actual rendering
-  target.addClass("landscape-rendering");
+  target.addClass("render-fragment");
 
   var beforeEvent = new $.Event("renderbefore");
   $(document).trigger(beforeEvent, {"fragment": target});
@@ -91,7 +91,7 @@ $.fn.render = function() {
     });
     $(document).trigger("renderafter", {"fragment": target});
   }
-  return target.removeClass("landscape-rendering");
+  return target.removeClass("render-fragment");
 };
 
 $.render = {
@@ -125,7 +125,7 @@ $.render = {
 };
 
 $(document).trigger("renderinit").one("renderafter", function() {
-  $('html').removeClass("landscape-loading");
+  $('html').removeClass("render-before");
 });
 
 // Default to render on load
@@ -260,7 +260,11 @@ $.layout = {
   // $.layout.orientation method:
   //
   orientation: function() {
-    return window.orientation ? window.orientation : (($(window).width() > $(window).height()) ? "landscape" : "portrait");
+    if (!isNaN(window.orientation)) {
+      return (window.orientation == 0 || window.orientation == 180) ? "portrait" : "landscape";
+    } else {
+      return ($(window).height() > $(window).width()) ? "portrait" : "landscape";
+    }
   },
 
   start: function() {

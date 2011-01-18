@@ -45,7 +45,11 @@ $.layout = {
   // $.layout.orientation method:
   //
   orientation: function() {
-    return window.orientation ? window.orientation : (($(window).width() > $(window).height()) ? "landscape" : "portrait");
+    if (!isNaN(window.orientation)) {
+      return (window.orientation == 0 || window.orientation == 180) ? "portrait" : "landscape";
+    } else {
+      return ($(window).height() > $(window).width()) ? "portrait" : "landscape";
+    }
   },
 
   start: function() {
