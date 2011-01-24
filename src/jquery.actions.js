@@ -32,7 +32,7 @@ $.actions = {
         if ($.isFunction(self.fn[name])) {
           var match = key.match(eventSplitter);
           var eventName = match[1], selector = match[2];
-          $(selector).live(eventName+".actions", function(evt) {
+          $(selector).live(eventName+".readymade", function(evt) {
             self.fn[name].apply(this, actionArguments(evt, this));
           });
         }
@@ -46,7 +46,7 @@ $.actions = {
     $.each($.actions.mapping, function(name, key) {
       var match = key.match(eventSplitter);
       var eventName = match[1], selector = match[2];
-      $(selector).die(eventName+".actions");
+      $(selector).die(eventName+".readymade");
     });
     isLive = false;
   },

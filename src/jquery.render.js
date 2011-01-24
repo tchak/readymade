@@ -2,16 +2,16 @@
 
 var optimizedMapping;
 
-$('html').addClass("render-before");
+$('html').addClass("ui-rendering");
 
 //
 $.fn.render = function() {
   var target = this, mapping = optimizedMapping || $.render.mapping;
 
   // Do actual rendering
-  target.addClass("render-fragment");
+  target.addClass("ui-rendering-fragment");
 
-  var beforeEvent = new $.Event("renderbefore");
+  var beforeEvent = new $.Event("render:before");
   $(document).trigger(beforeEvent, {"fragment": target});
   if (beforeEvent.result !== false) {
     $.each(mapping, function(method, selector) {
@@ -20,9 +20,9 @@ $.fn.render = function() {
         fn.apply(target.filter(selector).add(target.find(selector)), []);
       }
     });
-    $(document).trigger("renderafter", {"fragment": target});
+    $(document).trigger("render:after", {"fragment": target});
   }
-  return target.removeClass("render-fragment");
+  return target.removeClass("ui-rendering-fragment");
 };
 
 $.render = {
@@ -55,8 +55,8 @@ $.render = {
   }
 };
 
-$(document).trigger("renderinit").one("renderafter", function() {
-  $('html').removeClass("render-before");
+$(document).trigger("render:init").one("render:after", function() {
+  $('html').removeClass("ui-rendering");
 });
 
 // Default to render on load

@@ -29,7 +29,9 @@ $.extend(true, $.plugin, {
       width: 450,
       buttons: {
         OK: function() {
-          $(this).dialog("close");
+          var saveEvent = new $.Event("save");
+          $(this).trigger(saveEvent);
+          if (saveEvent.result !== false) { $(this).dialog("close"); }
         }
       }
     }
